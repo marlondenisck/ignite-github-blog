@@ -1,3 +1,4 @@
+import { Profile } from '../components/Profile'
 export function Home() {
-  return <h1>Ola mundo, pg home</h1>
+  return <Profile />
 }
