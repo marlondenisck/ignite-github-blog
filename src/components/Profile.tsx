@@ -77,44 +77,143 @@ const ArrowLeftIcon = () => (
   </svg>
 )
 
-export function Profile() {
+const ArrowRightIcon = () => (
+  <svg
+    width="12"
+    height="13"
+    viewBox="0 0 12 13"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <g clip-path="url(#clip0_1804_15)">
+      <path
+        d="M8.24987 12.125C8.04426 12.125 7.83855 12.0465 7.68185 11.8896L2.86042 7.06815C2.54653 6.75425 2.54653 6.24574 2.86042 5.93185L7.68185 1.11042C7.99574 0.796526 8.50425 0.796526 8.81815 1.11042C9.13204 1.42432 9.13204 1.93283 8.81815 2.24672L4.56475 6.5L8.81865 10.7539C9.13255 11.0678 9.13255 11.5763 8.81865 11.8902C8.6617 12.0472 8.45579 12.125 8.24987 12.125Z"
+        fill="#3294F8"
+      />
+    </g>
+    <defs>
+      <clipPath id="clip0_1804_15">
+        <rect
+          width="12"
+          height="12"
+          fill="white"
+          transform="translate(0 0.5)"
+        />
+      </clipPath>
+    </defs>
+  </svg>
+)
+
+const CalendarIcon = () => (
+  <svg
+    width="18"
+    height="18"
+    viewBox="0 0 18 18"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M6.96094 1.61719V2.67188H11.1797V1.61719C11.1797 1.0348 11.651 0.5625 12.2344 0.5625C12.8177 0.5625 13.2891 1.0348 13.2891 1.61719V2.67188H14.8711C15.7445 2.67188 16.4531 3.38016 16.4531 4.25391V5.83594H1.6875V4.25391C1.6875 3.38016 2.39579 2.67188 3.26953 2.67188H4.85156V1.61719C4.85156 1.0348 5.32288 0.5625 5.90625 0.5625C6.48962 0.5625 6.96094 1.0348 6.96094 1.61719ZM1.6875 6.89062H16.4531V15.8555C16.4531 16.7289 15.7445 17.4375 14.8711 17.4375H3.26953C2.39579 17.4375 1.6875 16.7289 1.6875 15.8555V6.89062ZM4.32422 9C4.03286 9 3.79688 9.2373 3.79688 9.52734V12.6914C3.79688 12.9814 4.03286 13.2188 4.32422 13.2188H7.48828C7.77832 13.2188 8.01562 12.9814 8.01562 12.6914V9.52734C8.01562 9.2373 7.77832 9 7.48828 9H4.32422Z"
+      fill="#3A536B"
+    />
+  </svg>
+)
+
+const CommentsIcon = () => (
+  <svg
+    width="18"
+    height="18"
+    viewBox="0 0 18 18"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M9.01482 1.6875C4.34619 1.6875 0.563326 4.7614 0.563326 8.55507C0.563326 10.1937 1.26824 11.691 2.44431 12.8704C2.0316 14.5335 0.652472 16.016 0.635963 16.0325C0.561675 16.1068 0.541039 16.2218 0.586438 16.3208C0.627768 16.4198 0.719259 16.4792 0.826565 16.4792C3.01395 16.4792 4.62684 15.4306 5.46878 14.7824C6.54514 15.1882 7.74696 15.4226 9.01482 15.4226C13.6834 15.4226 17.4375 12.3478 17.4375 8.55507C17.4375 4.76239 13.6834 1.6875 9.01482 1.6875Z"
+      fill="#3A536B"
+    />
+  </svg>
+)
+
+export function Profile({ isIssue = false }: { isIssue?: boolean }) {
   return (
     <div className="bg-profile relative mx-auto -my-20 flex w-full max-w-[54rem] gap-2 px-10 py-8">
-      <img
-        className="h-36 w-36 rounded-[8px]"
-        src={`https://github.com/marlondenisck.png`}
-        alt=""
-      />
-      <div className="ml-8 flex w-full flex-col">
-        <div className="mb-2 flex items-center justify-between">
-          <strong className="text-title text-2xl">{`marlon`}</strong>
-          <a
-            className="text-blue flex items-center gap-2 border-b-2 text-xs font-bold uppercase no-underline"
-            href={`https://github.com/marlondck`}
-            target="_blank"
-          >
-            GitHub
-            <ArrowLeftIcon />
-          </a>
-        </div>
-        <div className="mb-6">{`bio`}</div>
-        <div className="flex items-center gap-6">
-          <span className="text-subtitle hover:0.2s flex cursor-auto items-center justify-center gap-2 no-underline hover:brightness-[1.5] hover:transition-all">
-            <GithubIcon />
-            {`login`}
-          </span>
+      {!isIssue ? (
+        <>
+          <img
+            className="h-36 w-36 rounded-[8px]"
+            src={`https://github.com/marlondenisck.png`}
+            alt=""
+          />
+          <div className="ml-8 flex w-full flex-col">
+            <div className="mb-2 flex items-center justify-between">
+              <strong className="text-title text-2xl">{`marlon`}</strong>
+              <a
+                className="text-blue flex items-center gap-2 border-b-2 text-xs font-bold uppercase no-underline"
+                href={`https://github.com/marlondck`}
+                target="_blank"
+              >
+                GitHub
+                <ArrowLeftIcon />
+              </a>
+            </div>
+            <div className="mb-6">{`bio`}</div>
+            <div className="flex items-center gap-6">
+              <span className="text-subtitle hover:0.2s flex cursor-auto items-center justify-center gap-2 no-underline hover:brightness-[1.5] hover:transition-all">
+                <GithubIcon />
+                {`login`}
+              </span>
 
-          <span className="text-subtitle hover:0.2s flex cursor-auto items-center justify-center gap-2 no-underline hover:brightness-[1.5] hover:transition-all">
-            <OrganizationIcon />
-            {`company`}
-          </span>
+              <span className="text-subtitle hover:0.2s flex cursor-auto items-center justify-center gap-2 no-underline hover:brightness-[1.5] hover:transition-all">
+                <OrganizationIcon />
+                {`company`}
+              </span>
 
-          <span className="text-subtitle hover:0.2s flex cursor-auto items-center justify-center gap-2 no-underline hover:brightness-[1.5] hover:transition-all">
-            <FollowersIcon />
-            {12} seguidores
-          </span>
+              <span className="text-subtitle hover:0.2s flex cursor-auto items-center justify-center gap-2 no-underline hover:brightness-[1.5] hover:transition-all">
+                <FollowersIcon />
+                {12} seguidores
+              </span>
+            </div>
+          </div>
+        </>
+      ) : (
+        <div className="flex flex-1 flex-col gap-3">
+          <div className="flex items-center justify-between">
+            <a
+              className="text-blue hover:border-blue flex border-b-2 border-transparent text-xs font-bold uppercase no-underline"
+              href="/"
+            >
+              <span className="mr-3">
+                <ArrowRightIcon />
+              </span>
+              Voltar
+            </a>
+            <a
+              className="text-blue hover:border-blue flex border-b-2 border-transparent text-xs font-bold uppercase no-underline"
+              href=""
+            >
+              Ver no GitHub
+              <span className="ml-3">
+                <ArrowLeftIcon />
+              </span>
+            </a>
+          </div>
+          <strong className="text-title text-2xl">title</strong>
+          <div className="flex items-center gap-6">
+            <span className="text-subtitle flex cursor-default items-center gap-2 no-underline">
+              <GithubIcon />
+              nome
+            </span>
+            <span className="text-subtitle flex cursor-default items-center gap-2 no-underline">
+              <CalendarIcon />
+              aaaa
+            </span>
+            <span className="text-subtitle flex cursor-default items-center gap-2 no-underline">
+              <CommentsIcon />
+              comentário'
+            </span>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   )
 }

@@ -1,3 +1,11 @@
+import { Profile } from '../components/Profile'
+import { Post } from '../components/Post'
+
 export function Issues() {
-  return <h1> pg issues</h1>
+  return (
+    <>
+      <Profile isIssue />
+      <Post />
+    </>
+  )
 }
