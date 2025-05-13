@@ -1,3 +1,3 @@
 ## Ignite Github Blog
 
-<img with="800" src="./exemplo.png" />
+<img with="800" src="./projeto.png" />

@@ -1,3 +1,7 @@
+import { formatDistanceToNow } from 'date-fns'
+import { ptBR } from 'date-fns/locale'
+import { useGitHub } from '../context/githubContext'
+
 const GithubIcon = () => (
   <svg
     width="18"
@@ -135,42 +139,50 @@ const CommentsIcon = () => (
 )
 
 export function Profile({ isIssue = false }: { isIssue?: boolean }) {
+  const { user, issue } = useGitHub()
+
   return (
     <div className="bg-profile relative mx-auto -my-20 flex w-full max-w-[54rem] gap-2 px-10 py-8">
       {!isIssue ? (
         <>
           <img
             className="h-36 w-36 rounded-[8px]"
-            src={`https://github.com/marlondenisck.png`}
-            alt=""
+            src={user?.avatar_url}
+            alt={user?.name}
           />
           <div className="ml-8 flex w-full flex-col">
             <div className="mb-2 flex items-center justify-between">
               <strong className="text-title text-2xl">{`marlon`}</strong>
               <a
                 className="text-blue flex items-center gap-2 border-b-2 text-xs font-bold uppercase no-underline"
-                href={`https://github.com/marlondck`}
+                href={`https://github.com/${user?.login}`}
                 target="_blank"
               >
                 GitHub
                 <ArrowLeftIcon />
               </a>
             </div>
-            <div className="mb-6">{`bio`}</div>
+
+            <div className="mb-6">{user?.bio}</div>
+
             <div className="flex items-center gap-6">
               <span className="text-subtitle hover:0.2s flex cursor-auto items-center justify-center gap-2 no-underline hover:brightness-[1.5] hover:transition-all">
                 <GithubIcon />
-                {`login`}
+                {user?.login}
               </span>
 
               <span className="text-subtitle hover:0.2s flex cursor-auto items-center justify-center gap-2 no-underline hover:brightness-[1.5] hover:transition-all">
-                <OrganizationIcon />
-                {`company`}
+                {user?.company && (
+                  <span>
+                    <OrganizationIcon />
+                    {user?.company}
+                  </span>
+                )}
               </span>
 
               <span className="text-subtitle hover:0.2s flex cursor-auto items-center justify-center gap-2 no-underline hover:brightness-[1.5] hover:transition-all">
                 <FollowersIcon />
-                {12} seguidores
+                {user?.followers} seguidores
               </span>
             </div>
           </div>
@@ -189,7 +201,7 @@ export function Profile({ isIssue = false }: { isIssue?: boolean }) {
             </a>
             <a
               className="text-blue hover:border-blue flex border-b-2 border-transparent text-xs font-bold uppercase no-underline"
-              href=""
+              href={issue?.html_url}
             >
               Ver no GitHub
               <span className="ml-3">
@@ -197,19 +209,23 @@ export function Profile({ isIssue = false }: { isIssue?: boolean }) {
               </span>
             </a>
           </div>
-          <strong className="text-title text-2xl">title</strong>
+          <strong className="text-title text-2xl">{issue.title}</strong>
           <div className="flex items-center gap-6">
             <span className="text-subtitle flex cursor-default items-center gap-2 no-underline">
               <GithubIcon />
-              nome
+              {issue.user.login}
             </span>
             <span className="text-subtitle flex cursor-default items-center gap-2 no-underline">
               <CalendarIcon />
-              aaaa
+              {formatDistanceToNow(new Date(issue.created_at), {
+                addSuffix: true,
+                locale: ptBR
+              })}
             </span>
             <span className="text-subtitle flex cursor-default items-center gap-2 no-underline">
               <CommentsIcon />
-              comentário'
+              {issue.comments}{' '}
+              {issue.comments > 1 ? 'comentários' : 'comentário'}
             </span>
           </div>
         </div>
